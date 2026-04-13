@@ -2,7 +2,7 @@
 ### Group Name: Fake News Detectors
 ### Members: Deepak Dinesh, Nicole Guan, Aidan Henbest, and Akaash Walker
 
-Our GitHub: https://github.com/Akaash-Walker/DS-3010-Final-Project
+[GitHub link](https://github.com/Akaash-Walker/DS-3010-Final-Project)
 
 **Need**
 
