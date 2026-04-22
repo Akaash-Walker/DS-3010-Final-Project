@@ -1,3 +1,6 @@
+import Speedometer from "@/app/speedometer";
+
+
 export default function Home() {
     return (
         <div className="relative flex h-screen w-screen items-center justify-center overflow-hidden">
@@ -10,9 +13,13 @@ export default function Home() {
                 <p className="text-6xl font-bold">Fake News Detector</p>
                 <div className={"flex flex-col items-center gap-4"}>
                     <input type={"text"} className="input" placeholder="input article here"/>
-                    <div className={"flex gap-4"}>
-                        <button className={"btn btn-success"}>Real</button>
-                        <button className={"btn btn-error"}>Fake</button>
+                    <p className={"text-2xl font-bold"}>This article is most likely:</p>
+                    <div className="flex items-center gap-4">
+                        <button className="btn btn-xl btn-error">Fake</button>
+                        <div className="flex items-center justify-center">
+                            <Speedometer/>
+                        </div>
+                        <button className="btn btn-xl btn-success">Real</button>
                     </div>
                 </div>
             </div>
