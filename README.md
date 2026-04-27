@@ -2,8 +2,6 @@
 ### Group Name: Fake News Detectors
 ### Members: Deepak Dinesh, Nicole Guan, Aidan Henbest, and Akaash Walker
 
-[GitHub link](https://github.com/Akaash-Walker/DS-3010-Final-Project)
-
 **Need**
 
 With the rise in popularity of social media and fake news, verifying the reliability of news has become difficult. A machine learning fake news detector can address this problem at scale. Users can check the reliability of news articles through a model trained on thousands of articles. While this solution does not guarantee complete accuracy, it is a good way to limit misinformation in the age of AI and social media.
@@ -29,6 +27,6 @@ The main beneficiaries of this project will be everyday news readers who want to
 
 **Sketch**
 
-![sketch](/sketch.png)
+<img width="1644" height="1931" alt="Sketch" src="https://github.com/user-attachments/assets/70e5f57a-5931-4eae-bc81-ce6792ef6879" />
 
 When a user inputs a URL, we first use the Newspaper package to extract the title and body from the article. Then, we will make minor edits to this text so that it can be fed into BERT and turned into embeddings. The embeddings will then be fed into the model that we trained, which will output a verdict: real or fake. This output will then be returned to the user.
