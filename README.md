@@ -27,6 +27,6 @@ The main beneficiaries of this project will be everyday news readers who want to
 
 **Sketch**
 
-<img width="1644" height="1931" alt="Sketch" src="https://github.com/user-attachments/assets/70e5f57a-5931-4eae-bc81-ce6792ef6879" />
+<img width="1644" height="1931" alt="Sketch" src="https://github.com/user-attachments/assets/e14045cd-1caa-4421-89ab-7a65cccd0bbd" />
 
 When a user inputs a URL, we first use the Newspaper package to extract the title and body from the article. Then, we will make minor edits to this text so that it can be fed into BERT and turned into embeddings. The embeddings will then be fed into the model that we trained, which will output a verdict: real or fake. This output will then be returned to the user.
