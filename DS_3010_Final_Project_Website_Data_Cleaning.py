@@ -1,7 +1,7 @@
 # Imports
 import re
 from newspaper import Article
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import SentenceTransformer
 
 # Load embedding model (this should sit in memory rather than be loaded each time a user sends in a request)
 model = SentenceTransformer("microsoft/harrier-oss-v1-270m", model_kwargs = {"dtype": "auto"})
