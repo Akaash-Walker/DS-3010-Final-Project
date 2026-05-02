@@ -1,8 +1,10 @@
 "use client";
 import {useEffect, useState} from "react";
+import * as url from "node:url";
 
 export default function Input() {
     const [inputValue, setInputValue] = useState("");
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,8 +19,11 @@ export default function Input() {
             console.log(data);
         }
 
-        if (inputValue) {
+        try {
+            new URL(inputValue);
             fetchData();
+        } catch (err) {
+            console.log("Invalid URL");
         }
     }, [inputValue])
     return <input
