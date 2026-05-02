@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 
+from Modeling_Work.Website_Method import make_prediction
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {
     "origins": "*",
@@ -25,4 +27,7 @@ def send_link():
 
     # Here you would call your make_prediction function and return the result
     # For demonstration, we'll just return the URL
-    return jsonify({"url_received": url})
+    prediction = make_prediction(url)
+
+    print(prediction)
+    return jsonify({"prediction": prediction})

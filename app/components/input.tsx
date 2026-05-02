@@ -1,6 +1,5 @@
 "use client";
 import {useEffect, useState} from "react";
-import * as url from "node:url";
 
 export default function Input() {
     const [inputValue, setInputValue] = useState("");
@@ -16,7 +15,7 @@ export default function Input() {
                 body: JSON.stringify({url: inputValue})
             });
             const data = await result.json();
-            console.log(data);
+            console.log("prediction: ", data.Prediction);
         }
 
         try {

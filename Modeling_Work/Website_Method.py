@@ -1,4 +1,6 @@
 # Imports
+from pathlib import Path
+import numpy as np
 import joblib, re
 from newspaper import Article
 from sentence_transformers import SentenceTransformer
@@ -36,7 +38,8 @@ class MLPClassifier(Module):
 
 # Load models (these should sit in memory rather than be loaded each time a user sends in a request)
 embedding_model = SentenceTransformer("microsoft/harrier-oss-v1-270m", model_kwargs = {"dtype": "auto"})
-prediction_model = joblib.load("Multilayer_Perceptron.joblib")
+BASE_DIR = Path(__file__).resolve().parent
+prediction_model = joblib.load(BASE_DIR / "Logistic_Regression.joblib")
 
 def make_prediction(url):
     # We scrape the data from the website
@@ -70,4 +73,4 @@ def make_prediction(url):
                                               batch_size = 1)
 
     # Return prediction
-    return prediction_model.predict_proba(embed_title_text)[:, 1]
+    return prediction_model.predict_proba(embed_title_text[np.newaxis, :])[0, 1]
