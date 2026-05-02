@@ -2,10 +2,41 @@
 import joblib, re
 from newspaper import Article
 from sentence_transformers import SentenceTransformer
+from torch.nn import Module, Linear, GELU, Dropout, Sequential
+
+# Create our MLP architecture (so that the joblib import works correctly)
+class MLPClassifier(Module):
+    def __init__(self, input_dim, hidden_dim, dropout_rate, num_hidden_layers):
+        super().__init__()
+
+        # Where we store our layers
+        layers = []
+
+        # First set of layers
+        layers.append(Linear(input_dim, hidden_dim))
+        layers.append(GELU())
+        layers.append(Dropout(dropout_rate))
+
+        # Extra layers
+        for i in range(num_hidden_layers - 1):
+            next_dim = max(hidden_dim // 2, 2)
+            layers.append(Linear(hidden_dim, next_dim))
+            layers.append(GELU())
+            layers.append(Dropout(dropout_rate))
+            hidden_dim = next_dim
+
+        # Final layer
+        layers.append(Linear(hidden_dim, 1))
+
+        # Add to our network
+        self.network = Sequential(*layers)
+
+    def forward(self, x):
+        return self.network(x)
 
 # Load models (these should sit in memory rather than be loaded each time a user sends in a request)
 embedding_model = SentenceTransformer("microsoft/harrier-oss-v1-270m", model_kwargs = {"dtype": "auto"})
-prediction_model = joblib.load("Some_Model.joblib")
+prediction_model = joblib.load("MLP.joblib")
 
 def make_prediction(url):
     # We scrape the data from the website
