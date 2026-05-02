@@ -2,11 +2,10 @@
 ### Group Name: Fake News Detectors
 ### Members: Deepak Dinesh, Nicole Guan, Aidan Henbest, and Akaash Walker
 
-[GitHub link](https://github.com/Akaash-Walker/DS-3010-Final-Project)
-
 **Need**
 
 With the rise in popularity of social media and fake news, verifying the reliability of news has become difficult. A machine learning fake news detector can address this problem at scale. Users can check the reliability of news articles through a model trained on thousands of articles. While this solution does not guarantee complete accuracy, it is a good way to limit misinformation in the age of AI and social media.
+
 The main beneficiaries of this project will be everyday news readers who want to quickly ensure the reliability of the information they are reading.
 
 **Dataset**
@@ -20,8 +19,8 @@ The main beneficiaries of this project will be everyday news readers who want to
 
 **Tools**
 
-* [Hugging Face Transformers](https://huggingface.co/docs/transformers/en/model_doc/bert)
-  * We will use the BERT model from the Transformers library to extract embeddings from the article text
+* [Hugging Face Transformers](https://huggingface.co/microsoft/harrier-oss-v1-270m)
+  * We will use the Harrier model from the Transformers library to extract embeddings from the article text
 * [PyTorch](https://pytorch.org/)
   * We will create a deep learning model with PyTorch to classify articles as real or fake based on the title and text of the article
 * [Newspaper](https://newspaper.readthedocs.io/en/latest/)
@@ -29,6 +28,6 @@ The main beneficiaries of this project will be everyday news readers who want to
 
 **Sketch**
 
-![sketch](/sketch.png)
+<img width="1728" height="2304" alt="Sketch" src="https://github.com/user-attachments/assets/8fb49434-55db-43fa-99ab-3528ff1da725" />
 
-When a user inputs a URL, we first use the Newspaper package to extract the title and body from the article. Then, we will make minor edits to this text so that it can be fed into BERT and turned into embeddings. The embeddings will then be fed into the model that we trained, which will output a verdict: real or fake. This output will then be returned to the user.
+When a user inputs a URL, we first use the Newspaper package to extract the title and body from the article. Then, we will make minor edits to this text so that it can be fed into Harrier and turned into embeddings. The embeddings will then be fed into the model that we trained, which will output a verdict: real or fake. This output will then be returned to the user.
