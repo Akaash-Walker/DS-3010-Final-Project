@@ -1,5 +1,5 @@
 import Speedometer from "@/app/speedometer";
-
+import Input from "@/app/Input";
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
             <div className="relative flex flex-col items-center gap-24">
                 <p className="text-6xl font-bold">Fake News Detector</p>
                 <div className={"flex flex-col items-center gap-4"}>
-                    <input type={"text"} className="input" placeholder="Input link to article here..."/>
+                    <Input/>
                     <p className={"text-2xl font-bold"}>This article is most likely:</p>
                     <div className="flex items-center gap-4">
                         <button className="btn btn-xl btn-error bg-[#FF471A] border-[#FF471A]">Fake</button>
