@@ -5,6 +5,9 @@ import joblib, re
 from newspaper import Article
 from sentence_transformers import SentenceTransformer
 from torch.nn import Module, Linear, GELU, Dropout, Sequential
+# skorch
+# mlp classifier issue, not in __main___
+
 
 # Create our MLP architecture (so that the joblib import works correctly)
 class MLPClassifier(Module):
