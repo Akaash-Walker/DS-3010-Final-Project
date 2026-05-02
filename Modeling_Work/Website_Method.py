@@ -36,7 +36,7 @@ class MLPClassifier(Module):
 
 # Load models (these should sit in memory rather than be loaded each time a user sends in a request)
 embedding_model = SentenceTransformer("microsoft/harrier-oss-v1-270m", model_kwargs = {"dtype": "auto"})
-prediction_model = joblib.load("MLP.joblib")
+prediction_model = joblib.load("Multilayer_Perceptron.joblib")
 
 def make_prediction(url):
     # We scrape the data from the website
