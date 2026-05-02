@@ -1,1 +1,1 @@
-{"batch_size": 64, "lr": 0.002004420701650325, "module__dropout_rate": 0.8, "module__hidden_dim": 512, "module__input_dim": 640, "module__num_hidden_layers": 4, "optimizer__weight_decay": 0.1}
+{"batch_size": 128, "lr": 0.0009128166130068363, "module__dropout_rate": 0.5851611591801245, "module__hidden_dim": 512, "module__input_dim": 640, "module__num_hidden_layers": 1, "optimizer__weight_decay": 0.0020913407397763154}
