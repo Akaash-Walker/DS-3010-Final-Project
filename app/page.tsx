@@ -19,8 +19,8 @@ export default function Home() {
                     body: JSON.stringify({url: inputValue})
                 });
                 const data = await result.json();
-                console.log("prediction: ", data.Prediction);
-                setPredictionValue(data.Prediction);
+                console.log("prediction: ", data.prediction);
+                setPredictionValue(data.prediction);
             } catch (err) {
                 console.error("Error occurred: ", err);
             } finally {
@@ -49,7 +49,7 @@ export default function Home() {
                     <input
                         type={"text"}
                         className="input"
-                        placeholder="Input link to article here..."
+                        placeholder="Paste link to article here..."
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                     />
