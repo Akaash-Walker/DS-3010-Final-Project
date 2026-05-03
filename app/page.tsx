@@ -56,9 +56,14 @@ export default function Home() {
                     <p className={"text-2xl font-bold"}>This article is most likely:</p>
                     {isLoading ? (
                         <span className="loading loading-spinner loading-lg"></span>
-                    ) : (
-                        <span className="loading loading-spinner loading-lg opacity-0"></span>
-                    )}
+                    ) : predictionValue === undefined ? (
+                        <span className="text-3xl font-bold text-[#FF471A]">Error reading article.</span>
+                    ) : predictionValue < 0.5 ? (
+                        <span className="text-5xl font-bold text-[#FF471A]">Fake</span>
+                    ) : predictionValue > 0.5 ? (
+                        <span className="text-5xl font-bold text-[#6AD72D]">Real</span>
+                    ) : <span className={"text-5xl font-bold text-gray-500"}>Neutral</span>
+                    }
                     <div className="flex items-center gap-4">
                         <button className="btn btn-xl btn-error bg-[#FF471A] border-[#FF471A]">Fake</button>
                         <div className="flex items-center justify-center">
@@ -68,7 +73,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-gray-500">
+            <span className={"text absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-gray-500"}>
                 DISCLAIMER: This machine learning detector is not 100% accurate and was trained on a small dataset.
             </span>
         </div>
