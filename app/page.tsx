@@ -44,7 +44,9 @@ export default function Home() {
             </div>
 
             <div className="relative flex flex-col items-center gap-24">
-                <p className="text-6xl font-bold">Fake News Detector</p>
+                <p className="w-full text-center text-6xl font-bold leading-tight">
+                    Fake News Detector
+                </p>
                 <div className={"flex flex-col items-center gap-4"}>
                     <input
                         type={"text"}
@@ -53,28 +55,50 @@ export default function Home() {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                     />
-                    <p className={"text-2xl font-bold"}>This article is most likely:</p>
+                    {inputValue === "" ? null :
+                        <p className={"animate-fade-in text-2xl font-bold"}>This article is most likely:</p>
+                    }
                     {isLoading ? (
                         <span className="loading loading-spinner loading-lg"></span>
                     ) : predictionValue === undefined ? (
-                        <span className="text-3xl font-bold text-[#FF471A]">Error reading article.</span>
-                    ) : predictionValue < 0.5 ? (
-                        <span className="text-5xl font-bold text-[#FF471A]">Fake</span>
-                    ) : predictionValue > 0.5 ? (
-                        <span className="text-5xl font-bold text-[#6AD72D]">Real</span>
-                    ) : <span className={"text-5xl font-bold text-gray-500"}>Neutral</span>
+                        <span
+                            className="animate-fade-in text-3xl font-bold text-[#FF471A]">Error reading article.</span>
+                    ) : predictionValue < 0.4 ? (
+                        <span className="animate-fade-in text-5xl font-bold text-[#FF471A]">Fake</span>
+                    ) : predictionValue > 0.6 ? (
+                        <span className="animate-fade-in text-5xl font-bold text-[#6AD72D]">Real</span>
+                    ) : predictionValue >= 0.4 && predictionValue <= 0.6 && inputValue != "" ? (
+                        <span className="animate-fade-in text-5xl font-bold text-gray-400">Inconclusive</span>
+                    ) : null
                     }
-                    <div className="flex items-center gap-4">
-                        <button className="btn btn-xl btn-error bg-[#FF471A] border-[#FF471A]">Fake</button>
+                    <div className="hidden md:flex items-center gap-4">
+                        <button
+                            className="btn btn-xl btn-error bg-[#FF471A] border-[#FF471A] pointer-events-none">Fake
+                        </button>
                         <div className="flex items-center justify-center">
                             <Speedometer prediction={predictionValue}/>
                         </div>
-                        <button className="btn btn-xl btn-success bg-[#6AD72D] border-[#6AD72D]">Real</button>
+                        <button
+                            className="btn btn-xl btn-success bg-[#6AD72D] border-[#6AD72D] pointer-events-none">Real
+                        </button>
+                    </div>
+                    <div className="md:hidden flex flex-col items-center">
+                        <div className="flex items-center justify-center">
+                            <Speedometer prediction={predictionValue}/>
+                        </div>
+                        <div className="flex items-center justify-center -mt-32 gap-x-16">
+                            <button
+                                className="btn btn-xl btn-error bg-[#FF471A] border-[#FF471A] pointer-events-none">Fake
+                            </button>
+                            <button
+                                className="btn btn-xl btn-success bg-[#6AD72D] border-[#6AD72D] pointer-events-none">Real
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <span className={"text absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-gray-500"}>
-                DISCLAIMER: This machine learning detector is not 100% accurate and was trained on a small dataset.
+            <span
+                className="absolute bottom-1 md:bottom-4 left-0 right-0 mx-auto w-fit max-w-[92vw] px-2 text-center text-xs md:text-sm text-gray-500">                DISCLAIMER: This machine learning detector is not 100% accurate and was trained on a small dataset.
             </span>
         </div>
     );
