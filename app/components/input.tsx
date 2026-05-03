@@ -3,11 +3,11 @@ import {useEffect, useState} from "react";
 
 export default function Input() {
     const [inputValue, setInputValue] = useState("");
-
+    const backendUrl = process.env.NEXT_BACKEND_URL;
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch('http://localhost:5000/send_link', {
+            const result = await fetch(`${backendUrl}/api/send_link`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
