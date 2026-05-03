@@ -14,7 +14,7 @@ CORS(app, resources={r"/*": {
 def home():
     return jsonify({"status" : "Server is running on 5000"})
 
-@app.route("/api/send_link", methods=["POST", "OPTIONS"])
+@app.route("/send_link", methods=["POST", "OPTIONS"])
 @cross_origin()
 def send_link():
     if request.method == "OPTIONS":

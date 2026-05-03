@@ -6,12 +6,13 @@ export default function Home() {
     const [inputValue, setInputValue] = useState("");
     const [predictionValue, setPredictionValue] = useState(0.5);
     const [isLoading, setIsLoading] = useState(false);
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                const result = await fetch('http://localhost:5000/send_link', {
+                const result = await fetch(`${backendUrl}/send_link`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -43,8 +44,9 @@ export default function Home() {
                 <img src="/wpi_roundel.png" alt="WPI roundel"/>
             </div>
 
-            <div className="relative flex flex-col items-center gap-24">
-                <p className="w-full text-center text-6xl font-bold leading-tight">
+            <div className="relative flex flex-col items-center gap-6 md:gap-24">
+                <p
+                    className="w-full text-center text-6xl font-bold leading-tight">
                     Fake News Detector
                 </p>
                 <div className={"flex flex-col items-center gap-4"}>
