@@ -6,12 +6,13 @@ export default function Home() {
     const [inputValue, setInputValue] = useState("");
     const [predictionValue, setPredictionValue] = useState(0.5);
     const [isLoading, setIsLoading] = useState(false);
+    const backendUrl = process.env.BACKEND_URL || "http://localhost:10000";
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                const result = await fetch('http://localhost:5000/send_link', {
+                const result = await fetch(`${backendUrl}/send_link`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
