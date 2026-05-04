@@ -65,14 +65,17 @@ export default function Home() {
                     ) : predictionValue === undefined ? (
                         <span
                             className="animate-fade-in text-3xl font-bold text-[#FF471A]">Error reading article.</span>
-                    ) : predictionValue < 0.4 ? (
+                    ) : predictionValue < 0.2 ? (
                         <span className="animate-fade-in text-5xl font-bold text-[#FF471A]">Fake</span>
-                    ) : predictionValue > 0.6 ? (
+                    ) : predictionValue < 0.4 ? (
+                        <span className="animate-fade-in text-5xl font-bold text-[#FF471A]">Probably Fake</span>
+                    ) : predictionValue < 0.6 ? (
+                        <span className="animate-fade-in text-5xl font-bold text-gray-400">Unsure</span>
+                    ) : predictionValue < 0.8 ? (
+                        <span className="animate-fade-in text-5xl font-bold text-[#6AD72D]">Probably Real</span>
+                    ) : (
                         <span className="animate-fade-in text-5xl font-bold text-[#6AD72D]">Real</span>
-                    ) : predictionValue >= 0.4 && predictionValue <= 0.6 && inputValue != "" ? (
-                        <span className="animate-fade-in text-5xl font-bold text-gray-400">Inconclusive</span>
-                    ) : null
-                    }
+                    )}
                     <div className="hidden md:flex items-center gap-4">
                         <button
                             className="btn btn-xl btn-error bg-[#FF471A] border-[#FF471A] pointer-events-none">Fake
